@@ -8,13 +8,14 @@ public class FileReader {
 
     public Profile getDataFromFile(File file) {
         Profile profile = new Profile();
-        String fromFile = "";
         String[] subStr = new String[4];
         try (FileInputStream fileInputStream = new FileInputStream(file)){
             int ch;
+            StringBuilder builder = new StringBuilder();
             while((ch = fileInputStream.read()) != -1) {
-                fromFile += (char)ch;
+                builder.append((char)ch);
             }
+            String fromFile = builder.toString();
             String delimeter = "\n";
             subStr = fromFile.split(delimeter);
             String deleteName = "Name: ";
